@@ -1,0 +1,67 @@
+<!--
+Pedro Augusto Alarcao de Paula
+pedroaugusdepaula@my.smccd.edu
+CIS 114 OL
+map.html
+Finals
+5/25/2018
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Maps: Pedro Augusto Alarcao de Paula</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script>	
+		$(document).ready(function(){			
+			var fernandoDeNoronha = new google.maps.LatLng(-3.844798, -32.426892);
+			var mapOptions = {
+			zoom: 13, 
+			center: fernandoDeNoronha,
+			mapTypeId: google.maps.MapTypeId.SATELLITE
+			}
+			var map = new google.maps.Map($("#map").get(0), mapOptions);
+			
+			var locations = [
+			["Praia do Leao", -3.870083, -32.437157,1],
+			["Baia Do Sancho", -3.854689, -32.443696,2],
+			["Mirante Boldoro - Best Sunset location",-3.845188, -32.428319,3],
+			["Praia do Cachorro", -3.839164, -32.410963, 5],
+			["Morro Dos Dois Irmaos",-3.848300, -32.441779, 6]
+			];
+			
+			var infowindow = new google.maps.InfoWindow();
+			
+			var marker;
+			var	i;
+			
+			for (i = 0; i < locations.length; i++) {  
+				var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+					map: map
+				});
+				google.maps.event.addListener(marker, 'click', (function(marker, i) {
+					return function() {
+						infowindow.setContent(locations[i][0]);
+						infowindow.open(map, marker);
+					}
+				})(marker, i));
+			}
+		});
+		
+		/*examples that helped
+		https://developers.google.com/maps/documentation/javascript/infowindows
+		https://developers.google.com/maps/documentation/javascript/markers
+		https://developers.google.com/maps/documentation/javascript/custom-markers
+		https://developers.google.com/maps/documentation/javascript/maptypes
+		https://developers.google.com/maps/documentation/javascript/geolocation
+		*/
+    </script>
+</head>
+<body>
+	<h1>Places To Go In Fernando de Noronha</h1>
+   	<div id="map"></div>
+</body>
+</html>
