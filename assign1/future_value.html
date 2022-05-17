@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">	
+    <title>Future Value Application</title>
+    <script>
+		/*
+		Pedro Augusto Alarcao de Paula
+		pedroaugusdepaula@my.smccd.edu
+		114 OL
+		future_value.html
+		2/4/2018
+		Future Value exercise 3-1
+		*/
+		var futureValue;
+		var interest;
+		
+		// get user entries
+		var again = "Yes";
+		do {
+			var investment = prompt("Enter investment amount as xxxxx.xx", 10000);
+			investment = parseFloat(investment);
+			while (isNaN(investment) || investment < 0){
+				alert("Investment must be a positive number");
+				var investment = prompt("Enter a valid investment amount as xxxxx.xx", 10000);
+				investment = parseFloat(investment);
+			}
+			var rate = prompt("Enter interest rate as xx.x", 7.5);
+			rate = parseFloat(rate);
+			while (rate > 15 || rate < 0 || isNaN(rate)){
+				alert("Interest rate must be a number from 1-14");
+				var rate = prompt("Enter a valid interest rate as xx.x", 7.5);
+				rate = parseFloat(rate);
+			}
+			var years = prompt("Enter number of years", 10);
+			years = parseInt(years);
+		
+			// calulate future value
+			futureValue = investment;
+			document.write("Investment amount = " + investment);
+			document.write(" Interest rate = " + rate);
+			document.write(" Years = " + years + "<br>");
+			for (var i = 1; i <= years; i++ ) {
+				var showYear = "\nAt Year ";
+				var showInterest = ", You earned in interest $";
+				var showYearValue = " Total amount in investment is $";
+				showYear = showYear + i;
+				interest = parseInt(futureValue * rate / 100);
+				futureValue = parseInt(futureValue + (futureValue * rate / 100));
+				document.write(showYear);
+				document.write(" " + showInterest + interest);
+				document.write(" " + showYearValue + futureValue + "<br>");
+				
+			}
+			document.write("<br>");
+			futureValue = parseInt(futureValue);	
+			again = prompt("Would you like to invest again?", "Yes");
+			}
+			while (again == "Yes");
+    </script>
+</head>
+<body>
+    <main>
+        Thanks for using the Future Value application.
+    </main>
+</body>
+</html>
