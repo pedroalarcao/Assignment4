@@ -1,0 +1,31 @@
+<!--
+Pedro Augusto Alarcao de Paula
+pedroaugusdepaula@my.smccd.edu
+CIS 114 OL
+index.html
+Midterms
+2/28/2018
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Pedro Augusto Alarcao de Paula: Temperature Converter</title>
+   	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<main>
+    <h1>Temperature Converter</h1>    
+    <input type="radio" name="conversion_type" id="to_celsius" checked>Fahrenheit to Celsius<br>
+    <input type="radio" name="conversion_type" id="to_fahrenheit">Celsius to Fahrenheit<br><br>
+    <label id="degree_label_1">Enter F degrees:</label>
+    <input type="text" id="degrees_entered" ><br>
+    <label id="degree_label_2">Degrees Celsius:</label>
+    <input type="text" id="degrees_computed" disabled><br>
+    <label>&nbsp;</label>
+    <input type="button" id="convert" value="Convert" /><br>   
+</main>
+<script src="convert_temp.js"></script>
+</body>
+</html>
